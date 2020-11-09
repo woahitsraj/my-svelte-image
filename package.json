@@ -35,7 +35,12 @@
 		"start-server-and-test": "1.11.4",
 		"svelte": "3.29.6",
 		"svelte-loader": "2.13.6",
-		"svelte-preprocess": "4.5.2"
+		"svelte-preprocess": "^4.0.0",
+		"svelte-check": "^1.0.0",
+		"@rollup/plugin-typescript": "^6.0.0",
+		"typescript": "^3.9.3",
+		"tslib": "^2.0.0",
+		"@tsconfig/svelte": "^1.0.0"
 	},
 	"files": [
 		"dist"
@@ -78,7 +83,8 @@
 		"start": "sirv public",
 		"test": "start-server-and-test dev http://localhost:5000 cy:run",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"validate": "svelte-check"
 	},
 	"svelte": "dist/index.js",
 	"dependencies": {}

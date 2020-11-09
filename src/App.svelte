@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import { MyComponent } from './components';
-	const name = 'World';
+	const name: string = 'World';
 </script>
 
 <style>

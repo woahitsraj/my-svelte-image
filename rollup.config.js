@@ -2,8 +2,10 @@ import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import resolve from 'rollup-plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
+import typescript from '@rollup/plugin-typescript';
 import sveltePreprocess from 'svelte-preprocess';
 const { sveltePreprocessConfig } = require('./svelte-preprocess.config');
+const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
@@ -31,7 +33,7 @@ function serve() {
 }
 
 export default {
-	input: 'src/main.js',
+	input: 'src/main.ts',
 	output: {
 		sourcemap: true,
 		format: 'iife',
@@ -48,6 +50,10 @@ export default {
 			dedupe: ['svelte'],
 		}),
 		commonjs(),
+		typescript({
+			sourceMap: !production,
+			inlineSources: !production,
+		}),
 		serve(),
 		livereload('public'),
 	],
