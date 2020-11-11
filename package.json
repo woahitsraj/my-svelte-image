@@ -1,4 +1,34 @@
 {
+	"name": "my-svelte-image",
+	"prettier": {
+		"singleQuote": true,
+		"tabWidth": 4,
+		"useTabs": true
+	},
+	"keywords": [
+		"svelte",
+		"component",
+		"library"
+	],
+	"license": "MIT",
+	"repository": "TODO",
+	"files": [
+		"dist"
+	],
+	"svelte": "dist/index.js",
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run",
+		"dev": "rollup -c -w",
+		"lint": "eslint --color --ignore-path .gitignore .",
+		"prepare": "node preprocess",
+		"prepublishOnly": "npm run prepare",
+		"start": "sirv public",
+		"test": "start-server-and-test dev http://localhost:5000 cy:run",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook",
+		"validate": "svelte-check"
+	},
 	"browserslist": [
 		"defaults"
 	],
@@ -7,11 +37,13 @@
 		"@babel/core": "7.12.3",
 		"@babel/eslint-parser": "7.12.1",
 		"@babel/preset-env": "7.12.1",
+		"@rollup/plugin-typescript": "^6.0.0",
 		"@storybook/addon-actions": "6.0.28",
 		"@storybook/addon-essentials": "6.0.28",
 		"@storybook/addon-links": "6.0.28",
 		"@storybook/svelte": "6.0.28",
 		"@testing-library/cypress": "7.0.0",
+		"@tsconfig/svelte": "^1.0.0",
 		"autoprefixer": "10.0.1",
 		"babel-loader": "8.1.0",
 		"cypress": "5.6.0",
@@ -34,28 +66,17 @@
 		"sirv-cli": "1.0.8",
 		"start-server-and-test": "1.11.4",
 		"svelte": "3.29.6",
+		"svelte-check": "^1.0.0",
 		"svelte-loader": "2.13.6",
 		"svelte-preprocess": "^4.0.0",
-		"svelte-check": "^1.0.0",
-		"@rollup/plugin-typescript": "^6.0.0",
-		"typescript": "^3.9.3",
 		"tslib": "^2.0.0",
-		"@tsconfig/svelte": "^1.0.0"
+		"typescript": "^3.9.3"
 	},
-	"files": [
-		"dist"
-	],
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
 		}
 	},
-	"keywords": [
-		"svelte",
-		"component",
-		"library"
-	],
-	"license": "TODO",
 	"lint-staged": {
 		"*.{svelte, html, css, scss, stylus, js, ts, json, yml, md}": [
 			"prettier --write",
@@ -65,27 +86,5 @@
 			"eslint --fix",
 			"git add"
 		]
-	},
-	"name": "TODO",
-	"prettier": {
-		"singleQuote": true,
-		"tabWidth": 4,
-		"useTabs": true
-	},
-	"repository": "TODO",
-	"scripts": {
-		"cy:open": "cypress open",
-		"cy:run": "cypress run",
-		"dev": "rollup -c -w",
-		"lint": "eslint --color --ignore-path .gitignore .",
-		"prepare": "node preprocess",
-		"prepublishOnly": "npm run prepare",
-		"start": "sirv public",
-		"test": "start-server-and-test dev http://localhost:5000 cy:run",
-		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook",
-		"validate": "svelte-check"
-	},
-	"svelte": "dist/index.js",
-	"dependencies": {}
+	}
 }
