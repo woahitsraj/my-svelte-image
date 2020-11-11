@@ -11,7 +11,7 @@
 		"library"
 	],
 	"license": "MIT",
-	"repository": "TODO",
+	"repository": "https://github.com/woahitsraj/my-svelte-image",
 	"files": [
 		"dist"
 	],
@@ -32,7 +32,7 @@
 	"browserslist": [
 		"defaults"
 	],
-	"description": "TODO",
+	"description": "Svelte Image component",
 	"devDependencies": {
 		"@babel/core": "7.12.3",
 		"@babel/eslint-parser": "7.12.1",
