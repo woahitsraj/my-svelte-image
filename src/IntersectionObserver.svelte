@@ -6,11 +6,12 @@
   export let left = 0;
   export let right = 0;
   export let className = "";
+  export let lazyLoad = true;
   let intersecting = false;
 
   let container;
   onMount(() => {
-    if (typeof IntersectionObserver !== "undefined") {
+    if (typeof IntersectionObserver !== "undefined" || !lazyLoad) {
       const rootMargin = `${bottom}px ${left}px ${top}px ${right}px`;
       const observer = new IntersectionObserver(
         (entries) => {

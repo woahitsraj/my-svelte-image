@@ -19,8 +19,8 @@
     fadeInDuration: number | undefined = undefined,
     lazyLoad: boolean = true,
     className: string = "";
-  let loaded = false;
-  let nativeLoading = false;
+  let loaded = !lazyLoad;
+  let nativeLoading = !lazyLoad;
   onMount(() => {
     if ("loading" in HTMLImageElement.prototype) {
       nativeLoading = true;
@@ -54,7 +54,7 @@
   }
 </style>
 
-<IntersectionObserver once let:intersecting {className}>
+<IntersectionObserver once let:intersecting {className} {lazyLoad}>
   <Placeholder
     {showImage}
     backgroundImage={base64 ? `url(${base64})` : undefined}
