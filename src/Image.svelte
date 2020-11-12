@@ -62,7 +62,7 @@
   <Sizer {width} {height} />
   {#if imageAddStrategy({ lazyLoad, intersecting, loaded, nativeLoading })}
     <picture
-      style={`opacity: ${showImage ? 1 : 0};transition: ${!fadeInDuration || fadeInDuration > 0 ? `opacity${fadeInDuration || 500}ms` : undefined}`}>
+      style={`opacity: ${showImage ? 1 : 0};transition: ${!fadeInDuration || fadeInDuration > 0 ? `opacity ${fadeInDuration || 500}ms` : '0ms'}`}>
       <Source srcSet={webpSrcSet} {sizes} type="image/webp" />
       <Source {srcSet} {sizes} />
       <img {src} {alt} {title} loading={lazyLoad ? 'lazy' : 'eager'} use:load />

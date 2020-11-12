@@ -1,2 +1,2 @@
-import DatoCMSImage from "./Image.svelte";
-export { DatoCMSImage };
+import DatoImage from "./Image.svelte";
+export { DatoImage };
