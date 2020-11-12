@@ -1,50 +1,44 @@
-export const absolutePositioningStyles = `
-position: absolute;
-left: 0;
-top: 0;
-bottom: 0;
-right: 0;
-`;
+export const absolutePositioningStyles = `position: absolute;left: 0;top: 0;bottom: 0;right: 0;`;
 
-export const isSsr = typeof window === 'undefined';
+export const isSsr = typeof window === "undefined";
 
 const isIntersectionObserverAvailable = isSsr
-	? false
-	: !!window.IntersectionObserver;
+  ? false
+  : !!window.IntersectionObserver;
 
 export function imageAddStrategy({
-	lazyLoad,
-	intersecting,
-	loaded,
-	nativeLoading,
+  lazyLoad,
+  intersecting,
+  loaded,
+  nativeLoading,
 }) {
-	if (!lazyLoad || nativeLoading) {
-		return true;
-	}
+  if (!lazyLoad || nativeLoading) {
+    return true;
+  }
 
-	if (isSsr) {
-		return false;
-	}
+  if (isSsr) {
+    return false;
+  }
 
-	if (isIntersectionObserverAvailable) {
-		return intersecting || loaded;
-	}
+  if (isIntersectionObserverAvailable) {
+    return intersecting || loaded;
+  }
 
-	return true;
+  return true;
 }
 
 export const imageShowStrategy = ({ lazyLoad, loaded }) => {
-	if (!lazyLoad) {
-		return true;
-	}
+  if (!lazyLoad) {
+    return true;
+  }
 
-	if (isSsr) {
-		return false;
-	}
+  if (isSsr) {
+    return false;
+  }
 
-	if (isIntersectionObserverAvailable) {
-		return loaded;
-	}
+  if (isIntersectionObserverAvailable) {
+    return loaded;
+  }
 
-	return true;
+  return true;
 };
